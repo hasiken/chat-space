@@ -1,0 +1,28 @@
+.chat-main
+  .chat-main__group-info
+    .left-boxes 
+      .left-contens test
+      .left-point
+        .left-new Member:
+        .left-show kentarou
+        
+    .right-boxes Edit
+  .chat-main__massage-list
+    .message-data
+      .message-data__name
+        .user kentarou
+        .date 2020/02/20(Tue) 23:12:54
+      .message-data__comment こんばんは
+  
+  .chat-main__massage-form
+    %form.new_comment
+      .comment-box
+        %input{type: "text", class: "comment-box__text", placeholder: "type a  message"}
+        %label{class: "comment-box__pic"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "comment-box__pic__file"}
+
+      %input{type: "submit", class:"send-box" }  
+     
+       
+      
