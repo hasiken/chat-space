@@ -33,7 +33,7 @@ Things you may want to cover:
 ### Association
 - has_many :posts
 - has_many :users_groups
-- has_many :groups, through: :users_groups
+- has_many :groups, through:users_groups
 
 ## users_groupsテーブル
 |Column|Type|Options|
