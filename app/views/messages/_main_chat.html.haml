@@ -1,25 +1,51 @@
 .chat-main
   .chat-main__group-info
     .left-boxes 
-      .left-contens test
-      .left-point
-        .left-new Member:
-        .left-show kentarou        
-    .right-boxes Edit
+      .left-contens 
+        = @group.name
+        .left-point
+          menber:
+          - @group.users.each do |user|
+            .left-new
+              = user.name
+          
+    = link_to new_group_path do              
+      .right-boxes edit
   .chat-main__massage-list
     .message-data
       .message-data__name
         .user kentarou
         .date 2020/02/20(Tue) 23:12:54
-      .message-data__comment こんばんは  
+      .message-data__comment こんばんは
+      .messages
+        = render @messages  
   .chat-main__massage-form
-    %form.new_comment
-      .comment-box
-        %input{type: "text", class: "comment-box__text", placeholder: "type a  message"}
-        %label{class: "comment-box__pic"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "comment-box__pic__file"}
-      %input{type: "submit", class:"send-box" }  
-     
+    .form
+      = form_for [@group, @message],html: {class: 'comment-box'} do |f|
+        = f.text_field :content, class: 'comment-box__text', placeholder: 'type a message' do
+          =f.label :image, class: 'comment-box__pic' do
+            = icon('fas', 'image')
+            = f.file_field :image
+        %input{type: "submit", class:"send-box" }
+      
+
+    
+    
+    
+    
+    
+    
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+  
+
+
        
       
