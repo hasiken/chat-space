@@ -14,19 +14,23 @@
   .chat-main__massage-list
     .message-data
       .message-data__name
-        .user kentarou
-        .date 2020/02/20(Tue) 23:12:54
-      .message-data__comment こんばんは
+        -# .user 
+        -# .date 
+      .message-data__comment 
       .messages
         = render @messages  
   .chat-main__massage-form
     .form
       = form_for [@group, @message],html: {class: 'comment-box'} do |f|
         = f.text_field :content, class: 'comment-box__text', placeholder: 'type a message' do
-          =f.label :image, class: 'comment-box__pic' do
-            = icon('fas', 'image')
-            = f.file_field :image
-        %input{type: "submit", class:"send-box" }
+          = f.label :image, class: 'comment-box__pic' do
+            = icon('fas', 'image' ,clsss: 'comment-box__pic--text') do
+              = f.file_field :image
+        = f.submit "Send", class:"send-box" 
+       
+       
+        
+        
       
 
     
