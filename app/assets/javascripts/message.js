@@ -58,7 +58,6 @@ $('#new_message').on('submit', function(e){
        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});  
        $('.send-box').prop('disabled', false)
        $('form')[0].reset();
-      //  document.comment-box.reset
      })
 
    });
