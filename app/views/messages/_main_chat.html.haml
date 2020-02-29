@@ -12,20 +12,42 @@
     = link_to edit_group_path(@group) do             
       .right-boxes edit
   .chat-main__massage-list
+    = render @messages
     .message-data
       .message-data__name
-      .message-data__comment 
-      .messages
-        = render @messages  
+        .user 
+        .date 
+      .message-data__comment  
   .chat-main__massage-form
-    .form
-      = form_for [@group, @message],html: {class: 'comment-box'} do |f|
-        = f.text_field :content, class: 'comment-box__text', placeholder: 'type a message' do
-          = f.label :image, class: 'comment-box__pic' do
-            = icon('fas', 'image' ,clsss: 'comment-box__pic--text') do
-              = f.file_field :image
-        = f.submit "Send", class:"send-box" 
-       
+    = form_for [@group, @message] do |f|
+      .comment-box
+        = f.text_field :content, class: 'comment-box__text', placeholder: 'type a message' 
+        = f.label :image, class: 'comment-box__pic' do
+          = icon('fas', 'image' , class: 'comment-box__pic--text') 
+          = f.file_field :image , class: "comment-box__pic--text__file"
+      = f.submit "Send", class: "send-box" 
+    
+    
+    
+    
+    
+    -# %form.new_comment
+    -#   .comment-box
+    -#     %input{type: "text",class: "comment-box__text",placeholder: 'type a message' }
+    -#     %label{class: 'comment-box__pic'}
+    -#       = icon('fas', 'image' ,clsss: 'comment-box__pic--text')
+    -#       %input{type: "file", class: "comment_box_pic_file"}
+    -#   %input{type: "submit", class:"send-box"}
+    
+ 
+      
+      
+      
+      
+      
+      
+      
+     
        
         
         
