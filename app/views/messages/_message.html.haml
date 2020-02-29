@@ -1,11 +1,11 @@
-.message
-  .upper-message
-    .upper-message__user-name
+.message-data
+  .message-data__name
+    .user
       = message.user.name
-    .upper-message__date
+    .date
       = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-  .lower-message
+  .message-data__comment
     - if message.content.present?
-      %p.lower-message__content
+      %p.message-data__comment--list
         = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

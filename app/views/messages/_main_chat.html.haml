@@ -14,9 +14,9 @@
   .chat-main__massage-list
     .message-data
       .message-data__name
+        .user 
+        .date 
       .message-data__comment 
-      .messages
-        = render @messages  
   .chat-main__massage-form
     .form
       = form_for [@group, @message],html: {class: 'comment-box'} do |f|

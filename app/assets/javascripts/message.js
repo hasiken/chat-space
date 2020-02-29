@@ -2,17 +2,17 @@
    function buildPost(message){
     if ( message.image ) {
      var html= 
-     `<div class="message" >
-       <div class="upper-message">
-        <div class="upper-message__user-name">
+     `<div class="message-data" >
+       <div class="message-data__name">
+        <div class="user">
           ${message.user_name}
         </div>
-        <div class="upper-message__date">
+        <div class="date">
           ${message.created_at}
        </div>
      </div>
-     <div class="lower-message">
-       <p class="lower-message__content">
+     <div class="message-data__comment">
+       <p class="message-data__comment--list">
          ${message.content}
        </p>
     </div>
@@ -21,17 +21,17 @@
   return html;
 } else {
   var html =
-   `<div class="message" >
-     <div class="upper-message">
-      <div class="upper-message__user-name">
+   `<div class="message-data" >
+     <div class="message-data__name">
+      <div class="user">
         ${message.user_name}
       </div>
-      <div class="upper-message__date">
+      <div class="date">
        ${message.created_at}
       </div>
     </div>
-    <div class="lower-message">
-      <p class="lower-message__content">
+    <div class="message-data__comment">
+      <p class="message-data__comment--list">
        ${message.content}
       </p>
        </div>
@@ -53,8 +53,8 @@ $('#new_message').on('submit', function(e){
      })
      .done(function(post){
        var html = buildPost(post)
-       $('.messages').append(html);  
-       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});  
+       $('.message-data').append(html);  
+       $('.message-data').animate({ scrollTop: $('.chat-main__massage-list')[0].scrollHeight});  
        $('.send-box').prop('disabled', false)
        $('form')[0].reset();
      })
