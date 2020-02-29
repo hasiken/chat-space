@@ -3,16 +3,16 @@
    var buildPost = function(message) {
      if (message.content && message.image) {
       //data-idが反映されるようにしている
-      var html = `<div class="message" data-message-id=  ${message.id} > 
-      <div class="upper-message"> 
-           <div class="upper-message__user-name"> 
+      var html = `<div class="message-data" data-message-id= ${message.id} > 
+      <div class="message-data__name"> 
+           <div class="user"> 
            ${message.user_name} 
          </div> 
-          <div class="upper-message__date"> 
+          <div class="date"> 
           ${message.created_at}
           </div> 
         </div> 
-    <div class="lower-message"> 
+    <div class="message-data__comment "> 
           <p class="lower-message__content"> 
           ${message.content}
          </p> 
@@ -21,16 +21,16 @@
       </div>`
     } else if (message.content) {
      //同様に、data-idが反映されるようにしている
-      var html = `<div class="message" data-message-id=  $(message.id)  > 
-         <div class="upper-message"> 
-         <div class="upper-message__user-name"> 
+      var html = `<div class="message-data" data-message-id=  ${message.id}  > 
+         <div class="message-data__name"> 
+         <div class="user"> 
          ${message.user_name}
           </div> 
-          <div class="upper-message__date"> 
+          <div class="date"> 
           ${message.created_at} 
           </div> 
          </div> 
-         <div class="lower-message"> 
+         <div class="message-data__comment "> 
           <p class="lower-message__content"> 
           ${message.content} 
          </p> 
@@ -38,16 +38,16 @@
       </div>`
     } else if (message.image) {
       //同様に、data-idが反映されるようにしている
-      var html = `<div class="message" data-message-id=  ${message.id}  > 
-        <div class="upper-message"> 
-          <div class="upper-message__user-name"> 
+      var html = `<div class="message-data" data-message-id=  ${message.id}  > 
+        <div class="message-data__name"> 
+          <div class="user> 
           ${message.user_name} 
            </div> 
-          <div class="upper-message__date"> 
+          <div class="date"> 
             ${message.created_at} 
            </div> 
          </div> 
-         <div class="lower-message"> 
+         <div class="message-data__comment "> 
            <img src="  ${message.image}  " class="lower-message__image" > 
         </div> 
       </div>`
@@ -55,7 +55,7 @@
     return html;
    };
 
-$('#new_message').on('submit', function(e){
+  $('#new_message').on('submit', function(e){
      e.preventDefault();
      var formData = new FormData(this);
      var url = $(this).attr('action');
@@ -76,7 +76,7 @@ $('#new_message').on('submit', function(e){
      })
    });
    var reloadMessages = function() {
-    var last_message_id = $('.message:last').data("message-id");
+    var last_message_id = $('.message-data:last').data("message-id");
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -97,8 +97,9 @@ $('#new_message').on('submit', function(e){
       alert('error');
     });
   }
-   if (document.location.href.match(/\/groups\/\d\/messages/)) {
-    setInterval(reloadMessages, 7000);
+   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+     console.log("hello")
+    setInterval(reloadMessages, 3000);
   }
  });
 

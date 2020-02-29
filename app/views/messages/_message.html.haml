@@ -1,10 +1,10 @@
-.message{data: {message: {id:message.id}}}
-  .upper-message
-    .upper-message__user-name
+.message-data{data: {message: {id:message.id}}}
+  .message-data__name
+    .user 
       = message.user.name
-    .upper-message__date
+    .date
       = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-  .lower-message
+  .message-data__comment 
     - if message.content.present?
       %p.lower-message__content
         = message.content
