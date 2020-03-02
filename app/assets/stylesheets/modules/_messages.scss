@@ -12,18 +12,21 @@
   &__user-name{
     background-color: #253141;
     height: 100px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     .top-items{
-    height: 20px;
-    width: 220px;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    margin: auto 0;
     background-color: #253141;
-    margin: 0 20px;
     display: flex;
     justify-content: space-between;
     color: white;
      &__name{
-       line-height: 20px; 
+       font-size: larger;
+       line-height: 30px;
      }
      &__icons{
        width: 60px;
